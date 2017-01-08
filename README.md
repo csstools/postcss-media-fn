@@ -6,7 +6,7 @@
 [![Changelog][log-image]][log-url]
 [![Gitter Chat][git-image]][git-url]
 
-[Media()] lets you use the `media()` function to assign responsive values to a declaration.
+[Media()] lets you use the `media()` function to assign responsive values to a declaration, following the [CSS Media Expressions] specification.
 
 ```css
 /* before */
@@ -139,6 +139,7 @@ grunt.initConfig({
 [git-image]: https://img.shields.io/badge/chat-gitter-blue.svg
 
 [Media()]: https://github.com/jonathantneal/postcss-media-fn
+[CSS Media Expressions]: https://jonathantneal.github.io/media-expressions-spec/
 [PostCSS]: https://github.com/postcss/postcss
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
