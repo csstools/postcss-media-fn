@@ -2,8 +2,6 @@
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Licensing][lic-image]][lic-url]
-[![Changelog][log-image]][log-url]
 [![Gitter Chat][git-image]][git-url]
 
 [Media()] lets you use the `media()` function to assign responsive values to a declaration, following the [CSS Media Expressions] specification.
@@ -12,37 +10,37 @@
 /* before */
 
 h1 {
-	font-size: media(
-		16px,
-		(min-width:  600px) 20px,
-		(min-width: 1000px) 40px,
-		(min-width: 1400px) 60px
-	);
+  font-size: media(
+    16px,
+    (min-width:  600px) 20px,
+    (min-width: 1000px) 40px,
+    (min-width: 1400px) 60px
+  );
 }
 
 
 /* after */
 
 h1 {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 @media (min-width: 600px) {
-	h1 {
-		font-size: 20px;
-	}
+  h1 {
+    font-size: 20px;
+  }
 }
 
 @media (min-width: 1000px) {
-	h1 {
-		font-size: 40px;
-	}
+  h1 {
+    font-size: 40px;
+  }
 }
 
 @media (min-width: 1400px) {
-	h1 {
-		font-size: 60px;
-	}
+  h1 {
+    font-size: 60px;
+  }
 }
 ```
 
@@ -72,7 +70,7 @@ Load [Media()] as a PostCSS plugin:
 
 ```js
 postcss([
-	require('postcss-media-fn')({ /* options */ })
+  require('postcss-media-fn')({ /* options */ })
 ]).process(YOUR_CSS, /* options */);
 ```
 
@@ -90,13 +88,13 @@ Enable [Media()] within your Gulpfile:
 var postcss = require('gulp-postcss');
 
 gulp.task('css', function () {
-	return gulp.src('./src/*.css').pipe(
-		postcss([
-			require('postcss-media-fn')({ /* options */ })
-		])
-	).pipe(
-		gulp.dest('.')
-	);
+  return gulp.src('./src/*.css').pipe(
+    postcss([
+      require('postcss-media-fn')({ /* options */ })
+    ])
+  ).pipe(
+    gulp.dest('.')
+  );
 });
 ```
 
@@ -114,16 +112,16 @@ Enable [Media()] within your Gruntfile:
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-	postcss: {
-		options: {
-			use: [
-				require('postcss-media-fn')({ /* options */ })
-			]
-		},
-		dist: {
-			src: '*.css'
-		}
-	}
+  postcss: {
+    options: {
+      use: [
+        require('postcss-media-fn')({ /* options */ })
+      ]
+    },
+    dist: {
+      src: '*.css'
+    }
+  }
 });
 ```
 
@@ -131,10 +129,6 @@ grunt.initConfig({
 [npm-img]: https://img.shields.io/npm/v/postcss-media-fn.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-media-fn
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-media-fn.svg
-[lic-url]: LICENSE.md
-[lic-image]: https://img.shields.io/npm/l/postcss-media-fn.svg
-[log-url]: CHANGELOG.md
-[log-image]: https://img.shields.io/badge/changelog-md-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [git-image]: https://img.shields.io/badge/chat-gitter-blue.svg
 

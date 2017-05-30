@@ -50,13 +50,16 @@ module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
 											postcss.atRule({
 												name: 'media',
 												params: value.shift().trim(),
-												raws: {
-													before: '\n'
-												}
+												source: decl.source
 											}).append(
-												rule.clone().removeAll().append(
+												rule.clone({
+													raws: {
+														before: decl.raws.before
+													}
+												}).removeAll().append(
 													decl.clone({
-														value: value.join('').trim()
+														value: value.join('').trim(),
+														raws: {}
 													})
 												)
 											)
@@ -102,10 +105,3 @@ module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
 		}
 	);
 });
-
-// override plugin#process
-module.exports.process = function (cssString, pluginOptions, processOptions) {
-	return postcss([
-		0 in arguments ? module.exports(pluginOptions) : module.exports()
-	]).process(cssString, processOptions);
-};

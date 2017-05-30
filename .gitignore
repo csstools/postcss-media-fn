@@ -1,4 +1,10 @@
 node_modules
-*.log
-*.*cache
+.*
+!.appveyor.yml
+!.editorconfig
+!.gitignore
+!.tape.js
+!.travis.yml
+*.log*
 *.result.css
+package-lock.json
