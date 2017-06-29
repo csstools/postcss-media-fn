@@ -1,0 +1,6 @@
+node_modules
+.*
+!.gitignore
+*.log*
+test
+package-lock.json

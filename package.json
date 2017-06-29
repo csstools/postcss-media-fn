@@ -1,0 +1,17 @@
+{
+  "name": "postcss-media-fn-codepen",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "browserify codepen.js | babel --presets=env | uglifyjs --compress --mangle > codepen.bundle.js"
+  },
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "browserify": "^14.4.0",
+    "postcss": "^6.0.3",
+    "postcss-media-fn": "github:jonathantneal/postcss-media-fn",
+    "prismjs": "^1.6.0",
+    "uglify-js": "^3.0.21"
+  },
+  "private": true
+}
