@@ -3,6 +3,7 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
+[![Licensing][lic-img]][lic-url]
 [![Gitter Chat][git-image]][git-url]
 
 [Media()] lets you use the `media()` function to assign responsive values to a declaration, following the [CSS Media Expressions] specification.
@@ -132,6 +133,8 @@ grunt.initConfig({
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-media-fn.svg
 [css-img]: https://jonathantneal.github.io/css-db/badge/media-expressions.svg
 [css-url]: https://jonathantneal.github.io/css-db/#media-expressions
+[lic-url]: LICENSE.md
+[lic-img]: https://img.shields.io/npm/l/postcss-media-fn.svg
 [git-url]: https://gitter.im/postcss/postcss
 [git-image]: https://img.shields.io/badge/chat-gitter-blue.svg
 
