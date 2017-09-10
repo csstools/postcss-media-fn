@@ -1,10 +1,10 @@
 # Media() [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
+[![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
 [![Licensing][lic-img]][lic-url]
-[![Gitter Chat][git-image]][git-url]
+[![Gitter Chat][git-img]][git-url]
 
 [Media()] lets you use the `media()` function to assign responsive values to a declaration, following the [CSS Media Expressions] specification.
 
@@ -127,19 +127,19 @@ grunt.initConfig({
 });
 ```
 
-[npm-url]: https://www.npmjs.com/package/postcss-media-fn
-[npm-img]: https://img.shields.io/npm/v/postcss-media-fn.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-media-fn
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-media-fn.svg
 [css-img]: https://jonathantneal.github.io/css-db/badge/media-expressions.svg
 [css-url]: https://jonathantneal.github.io/css-db/#media-expressions
+[git-url]: https://gitter.im/postcss/postcss
+[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 [lic-url]: LICENSE.md
 [lic-img]: https://img.shields.io/npm/l/postcss-media-fn.svg
-[git-url]: https://gitter.im/postcss/postcss
-[git-image]: https://img.shields.io/badge/chat-gitter-blue.svg
+[npm-url]: https://www.npmjs.com/package/postcss-media-fn
+[npm-img]: https://img.shields.io/npm/v/postcss-media-fn.svg
 
-[Media()]: https://github.com/jonathantneal/postcss-media-fn
 [CSS Media Expressions]: https://jonathantneal.github.io/media-expressions-spec/
-[PostCSS]: https://github.com/postcss/postcss
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[Media()]: https://github.com/jonathantneal/postcss-media-fn
+[PostCSS]: https://github.com/postcss/postcss
