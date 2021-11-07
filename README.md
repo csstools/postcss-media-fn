@@ -127,10 +127,10 @@ grunt.initConfig({
 });
 ```
 
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-media-fn
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-media-fn.svg
-[css-img]: https://jonathantneal.github.io/css-db/badge/media-expressions.svg
-[css-url]: https://jonathantneal.github.io/css-db/#media-expressions
+[cli-url]: https://github.com/csstools/postcss-media-fn/actions/workflows/ci.yaml/badge.svg
+[cli-img]: https://github.com/csstools/postcss-media-fn/actions/workflows/ci.yaml
+[css-img]: https://cssdb.org/badge/media-expressions.svg
+[css-url]: https://cssdb.org/#media-expressions
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 [lic-url]: LICENSE.md
