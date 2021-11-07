@@ -1,5 +1,5 @@
-const postcss = require("postcss");
-const {parse} = require('postcss-values-parser');
+const postcss = require('postcss');
+const { parse } = require('postcss-values-parser');
 
 // local tooling
 const mediaFnRegExp = /media\([^)]+\)/i;
