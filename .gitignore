@@ -1,5 +1,6 @@
 node_modules
 package-lock.json
+yarn.lock
 .*
 !.appveyor.yml
 !.editorconfig
@@ -8,3 +9,4 @@ package-lock.json
 !.travis.yml
 *.log*
 *.result.css
+.eslintcache

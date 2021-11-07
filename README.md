@@ -51,7 +51,7 @@ h1 {
 Add [Media()] to your build tool:
 
 ```bash
-npm install postcss-media-fn --save-dev
+npm install postcss postcss-media-fn --save-dev
 ```
 
 #### Node
