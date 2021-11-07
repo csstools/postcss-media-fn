@@ -6,7 +6,6 @@ yarn.lock
 !.editorconfig
 !.gitignore
 !.tape.js
-!.travis.yml
+!.github
 *.log*
 *.result.css
-.eslintcache
