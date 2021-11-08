@@ -4,38 +4,42 @@
   "description": "Use `media()` to assign responsive values",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-media-fn",
-  "homepage": "https://github.com/jonathantneal/postcss-media-fn#readme",
-  "bugs": "https://github.com/jonathantneal/postcss-media-fn/issues",
+  "repository": "csstools/postcss-media-fn",
+  "homepage": "https://github.com/csstools/postcss-media-fn#readme",
+  "bugs": "https://github.com/csstools/postcss-media-fn/issues",
   "main": "index.js",
   "files": [
     "example.js",
     "index.js"
   ],
   "scripts": {
-    "clean": "git clean -X -d -f",
-    "prepublish": "npm test",
-    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
-    "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
-    "test:tape": "postcss-tape"
+    "lint:js": "eslint . --cache",
+    "lint": "npm run lint:js",
+    "pretest": "npm run lint",
+    "test": "postcss-tape",
+    "prepublishOnly": "npm test"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": "^10 || ^12 || >=14"
+  },
+  "peerDependencies": {
+    "postcss": "^8.3"
   },
   "dependencies": {
-    "postcss": "^6.0.11",
-    "postcss-value-parser": "^3.3.0"
+    "postcss-values-parser": "^6.0.1"
   },
   "devDependencies": {
-    "eslint": "^4.6.1",
-    "eslint-config-dev": "2.0.0",
-    "postcss-tape": "2.0.1",
-    "pre-commit": "^1.2.2"
+    "eslint": "7.32.0",
+    "postcss": "8.3.11",
+    "postcss-tape": "6.0.1"
   },
   "eslintConfig": {
-    "extends": "dev"
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended"
   },
-  "runkitExampleFilename": "example.js",
   "keywords": [
     "postcss",
     "css",

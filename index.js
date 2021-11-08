@@ -1,22 +1,30 @@
-// tooling
 const postcss = require('postcss');
-const parser = require('postcss-value-parser');
+const { parse } = require('postcss-values-parser');
 
 // local tooling
-const isLikelyMediaFn = (node) => node.type === 'decl' && (/media\([^\)]+\)/).test(node.value);
-const isMediaFn = (node) => node.type === 'function' && node.value === 'media';
+const mediaFnRegExp = /media\([^)]+\)/i;
+const isMediaFn = (node) => node.name === 'media';
 const isResponsiveValue = (value) => value.length > 1;
 const isNonResponsiveValue = (value) => value.length === 1;
 
-// plugin
-module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
-	css.walkRules(
-		(rule) => {
+/**
+ * Use `media()` to assign responsive values.
+ * @returns {import('postcss').Plugin}
+ */
+module.exports = function creator() {
+	return {
+		postcssPlugin: 'postcss-media-fn',
+		Rule(rule) {
 			const newAtRules = [];
 
-			Array.prototype.filter.call(rule.nodes, isLikelyMediaFn).forEach(
+			rule.walkDecls(
 				(decl) => {
-					const newValue = parser(decl.value).walk(
+					if (!mediaFnRegExp.test(decl.value)) {
+						return;
+					}
+
+					const valueAST = parse(decl.value);
+					valueAST.walkFuncs(
 						(node) => {
 							if (isMediaFn(node)) {
 								// all values
@@ -28,9 +36,8 @@ module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
 											values.push([]);
 										} else {
 											// otherwise, assign the stringified node to the last values sub-group
-											values[values.length - 1].push(parser.stringify(childNode));
+											values[values.length - 1].push(childNode.raws.before + childNode.toString() + childNode.raws.after);
 										}
-
 										return values;
 									},
 									[[]]
@@ -45,11 +52,14 @@ module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
 								// for each responsive value
 								responsiveValues.forEach(
 									(value) => {
+										const prop = value.pop().trim()
+										const media = value.join('').trim()
+
 										// add new @media at-rule, rule, and declaration to list
 										newAtRules.push(
 											postcss.atRule({
 												name: 'media',
-												params: value.shift().trim(),
+												params: media,
 												source: decl.source
 											}).append(
 												rule.clone({
@@ -58,7 +68,7 @@ module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
 													}
 												}).removeAll().append(
 													decl.clone({
-														value: value.join('').trim(),
+														value: prop,
 														raws: {}
 													})
 												)
@@ -71,15 +81,16 @@ module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
 								if (nonResponsiveValues.length) {
 									// re-assign the first non-responsive value to the declaration
 									node.type = 'word';
-									node.value = nonResponsiveValues.shift().join('');
+									node.value = nonResponsiveValues.join('');
 								} else {
 									// otherwise, remove the node
-									node.type = 'word';
-									node.value = '';
+									node.remove()
 								}
 							}
 						}
-					).toString();
+					);
+
+					const newValue = valueAST.toString()
 
 					// if the value has changed
 					if (decl.value !== newValue) {
@@ -89,7 +100,7 @@ module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
 							decl.remove();
 						} else {
 							// otherwise, update the declaration value
-							decl.value = newValue;
+							decl.value = newValue.trim();
 						}
 					}
 				}
@@ -103,5 +114,7 @@ module.exports = postcss.plugin('postcss-media-fn', () => (css) => {
 				}
 			}
 		}
-	);
-});
+	}
+}
+
+module.exports.postcss = true;

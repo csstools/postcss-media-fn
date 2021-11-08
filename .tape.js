@@ -1,7 +1,5 @@
 module.exports = {
-	'postcss-media-fn': {
-		'basic': {
-			message: 'supports basic usage'
-		}
+	'basic': {
+		message: 'supports basic usage'
 	}
 };

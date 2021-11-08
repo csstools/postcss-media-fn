@@ -1,10 +1,11 @@
 node_modules
 package-lock.json
+yarn.lock
 .*
 !.appveyor.yml
 !.editorconfig
 !.gitignore
 !.tape.js
-!.travis.yml
+!.github
 *.log*
 *.result.css
