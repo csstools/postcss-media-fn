@@ -4,8 +4,7 @@ const { parse } = require('postcss-values-parser');
 // local tooling
 const mediaFnRegExp = /media\([^)]+\)/i;
 const isMediaFn = (node) => node.name === 'media';
-const isResponsiveValue = (value) => value.length > 1;
-const isNonResponsiveValue = (value) => value.length === 1;
+const isResponsiveValue = (value) => value.length > 1 && /^\s*\([^)]+\)\s*$/i.test(value[0]);
 
 /**
  * Use `media()` to assign responsive values.
@@ -28,32 +27,20 @@ module.exports = function creator() {
 						(node) => {
 							if (isMediaFn(node)) {
 								// all values
-								const allValues = node.nodes.reduce(
-									(values, childNode) => {
-										// if the node is a dividing comma
-										if (childNode.value === ',') {
-											// create a new values sub-group
-											values.push([]);
-										} else {
-											// otherwise, assign the stringified node to the last values sub-group
-											values[values.length - 1].push(childNode.raws.before + childNode.toString() + childNode.raws.after);
-										}
-										return values;
-									},
-									[[]]
-								);
+								const allValues = postcss.list.comma(node.params.slice(1, -1))
+									.map(item => postcss.list.space(item));
 
 								// responsive values
-								const responsiveValues = allValues.filter(isResponsiveValue);
+								const responsiveValues = allValues.filter((value) => isResponsiveValue(value));
 
 								// non-responsive values
-								const nonResponsiveValues = allValues.filter(isNonResponsiveValue);
+								const nonResponsiveValues = allValues.filter((value) => !isResponsiveValue(value));
 
 								// for each responsive value
 								responsiveValues.forEach(
 									(value) => {
-										const prop = value.pop().trim()
-										const media = value.join('').trim()
+										const media = value.shift().trim()
+										const prop = value.join('').trim()
 
 										// add new @media at-rule, rule, and declaration to list
 										newAtRules.push(
