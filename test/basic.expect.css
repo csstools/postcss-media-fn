@@ -75,3 +75,27 @@ div {
 		color: rgba(1, 2, 3);
 	}
 }
+
+p {
+	width: 100%/2;
+}
+
+@media (min-width: 600px) {
+	p {
+		width: 100%/3;
+	}
+}
+
+del {
+	width: 100%/2;
+}
+
+@media (min-width: 600px) {
+	del {
+		width: 100%/3;
+	}
+}
+
+em {
+	width: media();
+}
