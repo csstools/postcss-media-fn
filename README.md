@@ -126,8 +126,8 @@ grunt.initConfig({
 });
 ```
 
-[cli-url]: https://github.com/csstools/postcss-media-fn/actions/workflows/ci.yaml/badge.svg
-[cli-img]: https://github.com/csstools/postcss-media-fn/actions/workflows/ci.yaml
+[cli-url]: https://github.com/csstools/postcss-media-fn/actions/workflows/ci.yaml
+[cli-img]: https://github.com/csstools/postcss-media-fn/actions/workflows/ci.yaml/badge.svg
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 [lic-url]: LICENSE.md
