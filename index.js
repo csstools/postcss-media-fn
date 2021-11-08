@@ -81,7 +81,7 @@ module.exports = function creator() {
 								if (nonResponsiveValues.length) {
 									// re-assign the first non-responsive value to the declaration
 									node.type = 'word';
-									node.value = nonResponsiveValues.join('');
+									node.value = nonResponsiveValues.shift().join('');
 								} else {
 									// otherwise, remove the node
 									node.remove()

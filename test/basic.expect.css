@@ -57,3 +57,21 @@ h2 {
 h4 {
 	font-size: 10px;
 }
+
+h5 {
+	font-size: 20px;
+}
+
+h6 {
+	color: rgba(0, 0, 0);
+}
+
+div {
+	color: rgba(0, 0, 0);
+}
+
+@media (min-width: 600px) {
+	div {
+		color: rgba(1, 2, 3);
+	}
+}
